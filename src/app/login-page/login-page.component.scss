@@ -1,0 +1,125 @@
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.p-light-center {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.background {
+    background-image: url(https://cnbl-cdn.bamgrid.com/assets/e1661b3f50369040bf7791248e36b330f4f37c238ccd2166f2d5cbff5ebf4758/original);
+    width:100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+    position:absolute;
+    z-index:0;
+    background-position: 50%;
+    background-size: cover;
+    display: block;
+}
+
+.loginContainer {
+    display: block;
+    z-index: 1;
+}
+
+.logoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+}
+
+.logo-white-full-l{
+    display: block;
+}
+
+.logo-white-full{
+    display: none;
+}
+
+.loginInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100px;
+}
+
+.emailPassword{
+    width: 70%;
+    height: 100%;
+}
+
+.emailInput {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border-top-left-radius: 10px;
+    border-bottom:0;
+    border-right:0;
+    padding-left: 10px;
+}
+
+.passwordInput {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border-bottom-left-radius: 10px;
+    border-right:0;
+    border-top: 0;
+    padding-left: 10px;
+}
+
+.submitBtn{
+    width: 20%;
+    height: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(0, 99, 229);
+    color: white;
+    font-size: larger;
+}
+.submitBtn:hover {
+    transform: translateY(-2px);
+}
+
+.submitBtn:active {
+    transform: translateY(2px);
+}
+
+.clickHere:visited {
+    color: white
+}
+
+@media only screen and (max-width: 500px) {
+    .logo-white-full-l{
+        width: 80%;
+    }
+
+    .p-light-center {
+        font-size: 14px;
+    }
+
+    .submitBtn{
+        font-size: 14px;
+
+    }
+
+    .emailInput {
+        font-size: 14px;
+    }
+
+    .passwordInput {
+        font-size: 14px;
+    }
+  }
