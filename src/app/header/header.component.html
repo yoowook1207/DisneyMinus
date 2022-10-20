@@ -1,8 +1,11 @@
 <div class="header">
     <img class="header-logo" src="../../assets/img/logo-white-s.png">
     <div>
-        <a class="logInBtn" href="/">Log In</a>
-        <a class="myAccount" href="/">My Account</a>
+        <a class="logInBtn" href="/" [ngStyle]="{'display': loginDisplay}">Log In</a>
+        <div class="loggedInBox" [ngStyle]="{'display': userAccountDisplay}">
+            <a id="myAccount" href="/">Hi, {{userName}}!</a>
+            <!-- <a id="logOut">Log Out</a> -->
+        </div>
     </div>
 
 </div>

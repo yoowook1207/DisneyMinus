@@ -22,10 +22,14 @@
     font-weight: bold;
 }
 
-.myAccount {
+.loggedInBox a {
     background-color: transparent;
     color: white;
     border: none;
     text-decoration: none;
     font-weight: bold;
+}
+
+#logOut {
+    margin-left: 15px;
 }
