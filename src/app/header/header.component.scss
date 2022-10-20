@@ -1,0 +1,16 @@
+.header {
+    background-color: rgb(26,29,41);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gray;
+    z-index: 1;
+}
+
+.header-logo{
+    max-width: 150px;
+}
