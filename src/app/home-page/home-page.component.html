@@ -1,0 +1,34 @@
+<app-header class="header"></app-header>
+<div class="homeMain">
+    <div class="heroContainer">
+        <div class="heroInfo">
+                <h1> Welcome to Disney Minus!</h1>
+                <p>This web application is mocking version of Disney+</p>
+        </div>
+        <div class="heroImage">
+            <picture>
+                <img src="https://nestflix.fun/img/_header/header-bg-1280w.avif">
+            </picture>
+        </div>
+    </div>
+    <div class="homeContents">
+        <div class="listContainer">
+            <h2>Continue to Watch</h2>
+            <ul class="movieCards">
+                <li
+                *ngFor="let movie of movieSearch.movieListObs$ | async"
+                >
+                {{movie.movieTitle}}
+                </li>
+            </ul>
+        </div>
+        <div class="listContainer">
+            <h2>Popular Movies</h2>
+            <ul class="movieCards">
+                
+            </ul>
+
+        </div>
+
+    </div>
+</div>

@@ -1,5 +1,5 @@
 .header {
-    background-color: rgb(26,29,41);
+    // background-color: rgb(26,29,41);
     width: 100%;
     box-sizing: border-box;
     padding: 2rem;
@@ -12,6 +12,7 @@
 
 .header-logo{
     max-width: 150px;
+    cursor: pointer;
 }
 
 .logInBtn {
