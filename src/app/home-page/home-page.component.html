@@ -3,7 +3,7 @@
     <div class="heroContainer">
         <div class="heroInfo">
                 <h1> Welcome to Disney Minus!</h1>
-                <p>This web application is mocking version of Disney+</p>
+                <p>This web application is the mocking version of Disney+</p>
         </div>
         <div class="heroImage">
             <picture>
@@ -14,13 +14,14 @@
     <div class="homeContents">
         <div class="listContainer">
             <h2>Continue to Watch</h2>
-            <ul class="movieCards">
-                <li
+            <div>
+                <div class="movieCards"
                 *ngFor="let movie of movieSearch.movieListObs$ | async"
                 >
-                {{movie.movieTitle}}
-                </li>
-            </ul>
+                <p>{{movie.movieTitle}}</p>
+                <p>{{movie.release_date}}</p>
+                </div>
+            </div>
         </div>
         <div class="listContainer">
             <h2>Popular Movies</h2>
