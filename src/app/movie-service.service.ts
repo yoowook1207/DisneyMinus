@@ -9,9 +9,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class MovieServiceService {
 
-  private movieList = [];
-  private movieList$ = new BehaviorSubject<any>(this.movieList);
-  movieListObs$ = this.movieList$.asObservable();
+  // private movieList = [];
+  // private movieList$ = new BehaviorSubject<any>(this.movieList);
+  // movieListObs$ = this.movieList$.asObservable();
 
   // https://api.themoviedb.org/3/movie/<<selector>>/api_key
 
@@ -31,15 +31,18 @@ export class MovieServiceService {
             id: movie.id,
             movieTitle: movie.title,
             release_date: movie.release_date,
+            posterUrl: 'https://image.tmdb.org/t/p/original' + movie.poster_path,
+            language: movie.original_language,
+            popularity: movie.popularity,
           };
 
           return eachMovies;
         });
       }),
-      tap((moviesFromBackend: any) => {
-        this.movieList = moviesFromBackend;
-        this.movieList$.next(this.movieList);
-      })
+      // tap((moviesFromBackend: any) => {
+      //   this.movieList = moviesFromBackend;
+      //   this.movieList$.next(this.movieList);
+      // })
     );
   };
 

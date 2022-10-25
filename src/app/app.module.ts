@@ -11,6 +11,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { MovieItemComponent } from './movie-item/movie-item.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     LoginPageComponent,
     RegisterPageComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    MovieItemComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

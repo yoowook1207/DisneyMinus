@@ -54,12 +54,50 @@
     max-width: 100%;
 }
 
-.movieCards {
-    border: 1px solid white
+.cardHolder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
+.movieCards {
+    width: 225px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .listContainer {
     margin: 2rem;
     margin-bottom: 3rem;
+}
+
+.posterHolder {
+    width: 100%;
+}
+
+.moviePoster {
+    width: 100%;
+}
+
+.textBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 45px;
+}
+
+.title {
+    width: 70%;
+    margin: 0;
+}
+
+.releaseDate {
+    width: 15%;
+    margin: 0;
+    color: rgba(75,75,100);
+    
 }

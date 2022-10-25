@@ -13,23 +13,40 @@
     </div>
     <div class="homeContents">
         <div class="listContainer">
-            <h2>Continue to Watch</h2>
-            <div>
+            <h2>Popular Movies</h2>
+            <div class="cardHolder">
                 <div class="movieCards"
-                *ngFor="let movie of movieSearch.movieListObs$ | async"
+                (onclick)="openModal()"
+                *ngFor="let movie of popularList"
                 >
-                <p>{{movie.movieTitle}}</p>
-                <p>{{movie.release_date}}</p>
+                    <div class="posterHolder">
+                        <img class="moviePoster" src={{movie.posterUrl}}/>
+                    </div>
+                    <div class="textBox">
+                        <!-- TODO: ellipsis for movie title -->
+                        <p class="title">{{movie.movieTitle}}</p>
+                        <p class="releaseDate">{{movie.language}}</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="listContainer">
-            <h2>Popular Movies</h2>
-            <ul class="movieCards">
-                
-            </ul>
-
+            <h2>Top Rated</h2>
+            <div class="cardHolder">
+                <div class="movieCards"
+                (onclick)="openModal()"
+                *ngFor="let movie of topRatedList"
+                >
+                    <div class="posterHolder">
+                        <img class="moviePoster" src={{movie.posterUrl}}/>
+                    </div>
+                    <div class="textBox">
+                        <!-- TODO: ellipsis for movie title -->
+                        <p class="title">{{movie.movieTitle}}</p>
+                        <p class="releaseDate">{{movie.language}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, pipe, Subscription, tap } from 'rxjs';
 import { MovieServiceService } from '../movie-service.service';
 
 @Component({
@@ -8,18 +8,21 @@ import { MovieServiceService } from '../movie-service.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  popularList! : any
+  topRatedList! : any
 
-  constructor(public movieSearch: MovieServiceService) {
-    this.movieSearch.getMovieList('popular');
-
-   }
+  constructor(public movieSearch: MovieServiceService) { }
 
   popularMovieList: any[] = [];
 
   ngOnInit(): void {
-    this.movieSearch.getMovieList('popular').subscribe();
-    
-    console.log(this.movieSearch.movieListObs$)
+    this.movieSearch.getMovieList('popular').subscribe(e => this.popularList = e)
+    this.movieSearch.getMovieList('top_rated').subscribe(e => this.topRatedList = e)
+
   };
+
+  openModal() {
+    
+  }
 
 }
