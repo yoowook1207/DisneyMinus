@@ -16,8 +16,8 @@
             <h2>Popular Movies</h2>
             <div class="cardHolder">
                 <div class="movieCards"
-                (onclick)="openModal()"
                 *ngFor="let movie of popularList"
+                (click)="openDialog(movie)"
                 >
                     <div class="posterHolder">
                         <img class="moviePoster" src={{movie.posterUrl}}/>
@@ -34,7 +34,7 @@
             <h2>Top Rated</h2>
             <div class="cardHolder">
                 <div class="movieCards"
-                (onclick)="openModal()"
+                (click)="openDialog(movie)"
                 *ngFor="let movie of topRatedList"
                 >
                     <div class="posterHolder">

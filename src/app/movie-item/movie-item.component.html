@@ -1,1 +1,11 @@
-<p>movie-item works!</p>
+<div class="singleModal">
+    {{data.movieTitle}}
+
+    <iframe
+    class="video"
+    [src]= "videoUrl | safeUrl"
+    frameborder="0" allowfullscreen
+    >
+    </iframe>
+    
+</div>

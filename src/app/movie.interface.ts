@@ -1,3 +1,12 @@
+export interface setMovie {
+  id: number;
+  movieTitle: string;
+  release_date: string;
+  genre?: string[] | null;
+  language: string;
+  homepage: string;
+}
+
 export interface MovieList {
     page: number;
     results: Movie[];

@@ -14,6 +14,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MovieItemComponent } from './movie-item/movie-item.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialExampleModule } from './material.modlue';
+import { SafeUrlPipe } from './safe-url.pipe';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     HomePageComponent,
     MovieItemComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

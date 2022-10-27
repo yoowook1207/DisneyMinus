@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, single, tap } from 'rxjs/operators';
-import { MovieList, Movie } from './movie.interface';
+import { MovieList, Movie, setMovie } from './movie.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
@@ -34,6 +34,7 @@ export class MovieServiceService {
             posterUrl: 'https://image.tmdb.org/t/p/original' + movie.poster_path,
             language: movie.original_language,
             popularity: movie.popularity,
+            video: movie.video,
           };
 
           return eachMovies;
@@ -46,6 +47,10 @@ export class MovieServiceService {
     );
   };
 
+  getTrailerUrl(movieId: number) {
+    return this.http.get<any>(this.movieApi+movieId+'/videos'+this.apiKey)
+  }
+
   getById(movieId: number) {
     let movieApi =
     'https://api.themoviedb.org/3/movie/' +
@@ -54,7 +59,7 @@ export class MovieServiceService {
 
     return this.http.get<Movie>(movieApi).subscribe(
       x=> {
-        const singleMovie:any ={
+        const singleMovie:setMovie ={
           id: x.id,
           movieTitle: x.title,
           release_date: x.release_date,
