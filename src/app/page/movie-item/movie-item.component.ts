@@ -4,7 +4,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { HomePageComponent } from '../home-page/home-page.component';
+import { HomePageComponent } from '../home-page/home1/home-page.component';
 import { MovieServiceService } from '../../services/tmdb/movie-service.service';
 import { setMovie } from '../../movie.interface';
 
