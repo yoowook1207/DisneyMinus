@@ -8,9 +8,9 @@ import { LandingPageComponent } from '../page/landing-page/landing-page.componen
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'home', component: HomePageComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegisterPageComponent},
+  {path: 'home', loadChildren: () => import('../page/home-page/lazy-home/lazy-home.module').then((data) => data.LazyHomeModule)},
+  {path: 'login', loadChildren: () => import('../page/login-page/lazy-login/lazy-login.module').then((data) => data.LazyLoginModule)},
+  {path: 'register', loadChildren: () => import('../page/register-page/lazy-register/lazy-register.module').then((data) => data.LazyRegisterModule)},
 
 ]
 
