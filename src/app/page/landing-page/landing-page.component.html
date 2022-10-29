@@ -1,0 +1,128 @@
+<main class="app">
+  <app-header class="header"></app-header>
+  <div class="landingStart">
+    <div class="letsStartContainer">
+      <div class="tripleLogoContainer">
+        <img
+          class="tripleLogo"
+          src="../../../assets/img/Landing-page/disney-triple.png"
+          alt="holo Disney- ESPN- logos"
+        />
+      </div>
+      <p>Enter your email to create the subscription.</p>
+      <form [formGroup]="checkUser" class="letsStart">
+        <input
+          name="email"
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+        />
+        <button
+          routerLink="{{ newOrNot }}"
+          [queryParams]="{ email: email.value }"
+        >
+          GET THE BUNDLE
+        </button>
+      </form>
+      <div
+        class="invalid"
+        *ngIf="!email.valid && (email.dirty || email.touched)"
+      >
+        Please enter the correct email address
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="our-story-card">
+      <div class="animation-card-container">
+        <div class="our-story-card-text">
+          <h1 class="our-story-card-title">Enjoy on your TV.</h1>
+          <h2 class="our-story-card-subtitle">
+            Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray
+            players, and more.
+          </h2>
+        </div>
+        <div class="our-story-card-img-container">
+          <div class="our-story-card-animation-container">
+            <img
+              alt
+              class="our-story-card-img"
+              src="../../../assets/img/Landing-page/disney-tvon.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="our-story-card">
+      <div class="animation-card-container">
+        <div class="our-story-card-img-container">
+          <div class="our-story-card-animation-container">
+            <img
+              alt
+              class="our-story-card-img"
+              src="../../../assets/img/Landing-page/thor-iPhone.png"
+            />
+            <div class="our-story-card-animation-download">
+              <div class="our-story-card-animation-image">
+                <img
+                  alt
+                  class="img-download"
+                  src="../../../assets/img/Landing-page/Thor.webp"
+                />
+              </div>
+              <div class="our-story-card-animation-text">
+                <div id class="text-0">Thor: Love and Thunder</div>
+                <div id class="text-1">Downloading...</div>
+              </div>
+              <div class="our-story-card-animation-custom-download"></div>
+            </div>
+          </div>
+        </div>
+        <div class="our-story-card-text">
+          <h1 class="our-story-card-title">
+            Download your shows to watch offline.
+          </h1>
+          <h2 class="our-story-card-subtitle">
+            Save your favorites easily and always have something to watch.
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="our-story-card">
+      <div class="animation-card-container">
+        <div class="our-story-card-text">
+          <h1 class="our-story-card-title">Watch everywhere.</h1>
+          <h2 class="our-story-card-subtitle">
+            Stream unlimited movies and TV shows on your phone, tablet, laptop,
+            and TV without paying more.
+          </h2>
+        </div>
+        <div class="our-story-card-img-container">
+          <div class="our-story-card-animation-container-everywhere">
+            <img
+              alt
+              class="our-story-card-img"
+              src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png"
+            />
+            <div class="our-story-card-animation-everywhere">
+              <video
+                class="our-story-card-video"
+                autoplay
+                playsinline
+                muted
+                loop
+              >
+                <source
+                  src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v"
+                  type="video/mp4"
+                />
+              </video>
+              <div class="our-story-card-animation-text"></div>
+              <div class="our-story-card-animation-custom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -5,8 +5,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { HomePageComponent } from '../home-page/home-page.component';
-import { MovieServiceService } from '../movie-service.service';
-import { setMovie } from '../movie.interface';
+import { MovieServiceService } from '../../services/tmdb/movie-service.service';
+import { setMovie } from '../../movie.interface';
 
 @Component({
   selector: 'app-movie-item',

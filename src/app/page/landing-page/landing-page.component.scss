@@ -1,0 +1,337 @@
+* {
+  letter-spacing: 0 !important;
+  font-family: Netflix Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0 auto;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin: 0.75em 0 0.25em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+video {
+  display: inline-block;
+  vertical-align: baseline;
+  object-fit: contain;
+}
+
+.app {
+  background-color: #000;
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.landingStart {
+  min-height: 450px;
+  border-bottom: 8px solid #222;
+}
+
+.letsStartContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 100px;
+}
+
+.tripleLogoContainer {
+  width: 60vw;
+}
+
+.tripleLogo {
+  width: 100%;
+}
+
+.letsStartContainer p {
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  font-size: 18px;
+  color: rgb(140, 140, 140);
+  font-weight: 600;
+  letter-spacing: 50pt;
+}
+
+.letsStart {
+  margin-top: 10px;
+  display: flex;
+  width: 60%;
+}
+
+.letsStart input {
+  width: 75%;
+  height: 40px;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgb(50, 50, 60);
+  font-size: 18px;
+  padding-left: 15px;
+}
+
+.letsStart input:focus {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.letsStart button {
+  width: 25%;
+  background-color: #0071eb;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.letsStart button:hover {
+  background-color: #3a90ec;
+}
+
+.letsStart button:active {
+  transform: translateY(2px);
+}
+
+.invalid {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(255, 108, 79, 0.75);
+}
+
+.our-story-card {
+  padding: 70px 45px;
+  border-bottom: 8px solid #222;
+  color: #fff;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.animation-card-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.our-story-card-text {
+  margin: -5% 0;
+  flex: 0 1 auto;
+  height: 100%;
+  padding: 0 3rem 0 0;
+  width: 52%;
+  z-index: 3;
+  font-size: 1.625rem;
+}
+
+.our-story-card-title {
+  font-family: "New Walt Disney Font", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.our-story-card-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.our-story-card-img-container {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  height: 100%;
+  width: 48%;
+}
+
+.our-story-card-animation-container {
+  margin: -10% -5% -5% 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 100px;
+  width: 100%;
+}
+
+.our-story-card-img {
+  position: relative;
+  z-index: 2;
+  border: 0;
+  height: auto;
+  max-width: 100%;
+}
+
+.our-story-card-animation {
+  height: 100%;
+  left: 50%;
+  max-height: 54%;
+  max-width: 73%;
+  position: absolute;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.our-story-card-video {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  vertical-align: baseline;
+  object-fit: contain;
+}
+
+.our-story-card-animation-image {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0 1em 0 0;
+}
+
+.our-story-card-animation-download {
+  padding: 0.5em 0.75em;
+  align-items: center;
+  background: #000;
+  border: 2px solid hsla(0, 0%, 100%, 0.25);
+  border-radius: 0.75em;
+  bottom: 8%;
+  box-shadow: 0 0 2em 0 #000;
+  display: flex;
+  left: 50%;
+  margin: 0 auto;
+  min-width: 15em;
+  padding: 0.25em 0.65em;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 60%;
+  z-index: 99;
+}
+
+.our-story-card-animation-text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 0.3em 0;
+}
+
+.text-0 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.text-1 {
+  color: #0071eb;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.img-download {
+  height: 4.5em;
+}
+
+.our-story-card-animation-custom-download {
+  background: url(https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif)
+    50% no-repeat;
+  background-size: 100%;
+  content: "";
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 3em;
+  outline: 2px solid #000;
+  outline-offset: -2px;
+  width: 3em;
+  height: 3.75em;
+}
+
+.our-story-card-animation-container-everywhere {
+  margin: -5% -10% 0 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 100px;
+  width: 100%;
+}
+
+.our-story-card-animation-everywhere {
+  height: 100%;
+  left: 50%;
+  max-height: 47%;
+  max-width: 63%;
+  position: absolute;
+  top: 34%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media only screen and (max-width: 650px) {
+  .animation-card-container {
+    flex-wrap: wrap;
+  }
+
+  .our-story-card-text {
+    width: 100%;
+    padding: 0;
+    font-size: 1.625rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .our-story-card-img-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .our-story-card-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .our-story-card-subtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .letsStart button {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .letsStartContainer {
+    padding: 50px;
+  }
+
+  .tripleLogoContainer {
+    width: 75vw;
+  }
+  .letsStart {
+    display: flex;
+    width: 75%;
+  }
+}

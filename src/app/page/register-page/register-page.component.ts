@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -7,25 +8,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPageComponent implements OnInit {
-  user: User ={};
-  constructor() { }
+  fromEmail: string = '';
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParamMap.subscribe((params)=> {
+      this.fromEmail = params.get('email') || '';
+    })
   }
 
   onSubmit(formName: NgForm) {
-    console.log(this.user)
     console.log(formName.valid)
     console.log(formName.touched)
     console.log(formName.pristine)
     console.log(formName.dirty)
   }
 
-}
-
-export interface User {
-  email?: string;
-  password?: string;
-  passwordConfirmed?: string;
-  agreeCheckBox?: boolean;
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, single, tap } from 'rxjs/operators';
-import { MovieList, Movie, setMovie, singleFromList } from './movie.interface';
+import { MovieList, Movie, setMovie, singleFromList } from '../../movie.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({

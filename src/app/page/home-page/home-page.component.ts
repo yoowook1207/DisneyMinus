@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieServiceService } from '../movie-service.service';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { MovieServiceService } from '../../services/tmdb/movie-service.service';
 import { MovieItemComponent } from '../movie-item/movie-item.component';
 
 @Component({

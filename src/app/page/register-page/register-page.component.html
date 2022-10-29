@@ -4,12 +4,12 @@
         <h2>Welcome to Disney-!</h2>
         <p>You will use this email and password to log into your accounts for all your favorite services across The Wallet Disney Family of Companies, including Disney-.</p>
         <form class="registrationForm" #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
-            <input [(ngModel)]="user.email" type="email" name="email" id="email" class="inputBox" placeholder="email@mail.com" required email>
-            <input [(ngModel)]="user.password" type="password" name="password" id="password" class="inputBox"  placeholder="password">
-            <input [(ngModel)]="user.passwordConfirmed" type="password" name="passwordConfirm" id="passwordConfirm" class="inputBox"  placeholder="Confirm password" autocomplete="off">
+            <input type="email" id="email" class="inputBox" placeholder="email@mail.com" required email value={{fromEmail}}>
+            <input type="password" id="password" class="inputBox"  placeholder="password">
+            <input type="password" id="passwordConfirm" class="inputBox"  placeholder="Confirm password" autocomplete="off">
             <div class="agreeBox">
                 <div>
-                    <input [(ngModel)]="user.agreeCheckBox" type="checkbox" name="agreeCheckBox" id="agreeCheckBox">
+                    <input type="checkbox" name="agreeCheckBox" id="agreeCheckBox">
                 </div>
                 <p>Yes! I would like to receive updates, special offers, and other information from Disney+ and The Wallet Disney Family of Companies.</p>
             </div>
