@@ -32,7 +32,8 @@ export class LandingPageComponent implements OnInit {
   ngDoCheck() {
     // if email is exist, 'login', else if email is not exist, 'register'
     if (this.email.valid && (this.email.dirty || this.email.touched)) {
-      this.newOrNot = 'login/loginpage';
+      this.newOrNot = 'register/registration';
+      // login/loginpage
     }
     // else if (this.email.valid && (this.email.dirty || this.email.touched)) {
     //   this.newOrNot = 'register/registration';

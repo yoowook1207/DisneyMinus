@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialExampleModule } from './material.module';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     BrowserAnimationsModule,
     MatNativeDateModule,
     MaterialExampleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

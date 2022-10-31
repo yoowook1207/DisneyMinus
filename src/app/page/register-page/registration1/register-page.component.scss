@@ -20,7 +20,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+}
+
+.pwdHolder {
+  width: 100%;
 }
 
 .inputBox {
@@ -33,6 +36,7 @@
   padding: 7px 12px;
   box-sizing: border-box;
   caret-color: aqua;
+  margin-top: 10px;
 }
 
 .inputBox:focus {
@@ -41,6 +45,7 @@
 }
 
 .agreeBox {
+  margin-top: 10px;
   display: flex;
   gap: 5px;
 }
@@ -96,4 +101,50 @@
 .submitBtn:hover {
   background-color: #0082f0;
   transition: background-color 0.2 ease-in-out;
+}
+
+.invalid {
+  color: red;
+}
+
+.iconGreen {
+  color: green;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.iconRed {
+  color: red;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.pwdErrorBox {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.errRow {
+  display: flex;
+  height: 20px;
+}
+
+.validateMsg {
+  color: black;
+  font-size: 12px;
+}
+
+.elementToFadeIn {
+  opacity: 1;
+  animation: fade-in 1s linear;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
