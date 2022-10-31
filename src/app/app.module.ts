@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginPageComponent } from './page/login-page/login1/login-page.component';
 import { RegisterPageComponent } from './page/register-page/registration1/register-page.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './page/header/header.component';
 import { HomePageComponent } from './page/home-page/home1/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';

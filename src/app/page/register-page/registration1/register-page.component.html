@@ -4,6 +4,11 @@
         <h2>Welcome to Disney-!</h2>
         <p>You will use this email and password to log into your accounts for all your favorite services across The Wallet Disney Family of Companies, including Disney-.</p>
         <form class="registrationForm" [formGroup]="regFirstPage" (ngSubmit)="onSubmit()">
+            <div>
+                <label><input type="radio" name="role" value="user" formControlName="role">User</label>
+                <label><input type="radio" name="role" value="admin" formControlName="role">Admin</label>
+                <label><input type="radio" name="role" value="super" formControlName="role">Super</label>
+            </div>
             <input type="email" formControlName="email" class="inputBox" placeholder="email@mail.com" required email value={{fromEmail}}>
             <div *ngIf="!email.valid && (email.dirty || email.touched)">
                 <div *ngIf="email.errors?.['hasemail']" class="invalid">
@@ -79,7 +84,7 @@
                         Maryland Privacy Notice
                     </a>
                 </p>
-                <button  type="submit" class="submitBtn" *ngIf="!term.value || (term.value.dirty || term.value.touched)">
+                <button  type="button" class="submitBtn" *ngIf="!filledAll()" (click)="filledFalse()">
                     AGREE & CONTINUE
                 </button>
                 <button type="submit" class="submitBtn" routerLink='../../home/homepage' *ngIf="filledAll()">

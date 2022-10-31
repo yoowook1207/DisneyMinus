@@ -8,7 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -31,6 +31,9 @@ export class RegisterPageComponent implements OnInit {
   get term(): FormControl {
     return this.regFirstPage.get('agreeTerm') as FormControl;
   }
+  get role(): FormControl {
+    return this.regFirstPage.get('role') as FormControl;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,6 +45,7 @@ export class RegisterPageComponent implements OnInit {
       this.fromEmail = params.get('email') || '';
     });
     this.regFirstPage = this.fb.group({
+      role: '',
       email: [
         this.fromEmail || '',
         [
@@ -76,6 +80,7 @@ export class RegisterPageComponent implements OnInit {
     if (this.term.value) {
       this.showTermError = true;
     }
+    // console.log(this.regFirstPage.value)
   }
 
   onSubmit() {
@@ -85,10 +90,14 @@ export class RegisterPageComponent implements OnInit {
   }
 
   filledAll = () => {
-    if (this.email.valid && this.pwd.valid && this.term.value) {
+    if (this.email.valid && this.pwd.valid && this.term.value && this.role.value) {
       return true;
     } else return false;
   };
+
+  filledFalse = () => {
+    alert("Please check/fill the all information")
+  }
 
   private matchPwd = (group: FormGroup): ValidationErrors | null => {
     const pwdval = group.get('password')?.value;
