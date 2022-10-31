@@ -13,7 +13,7 @@
     </div>
     <div class="homeContents">
         <div class="listContainer">
-            <h2>Popular Movies</h2>
+            <h1>Top 20 Most Popular Movies</h1>
             <div class="cardHolder">
                 <div class="movieCards"
                 *ngFor="let movie of popularList"
@@ -31,8 +31,14 @@
             </div>
         </div>
         <div class="listContainer">
-            <h2>Top Rated</h2>
-            <div class="cardHolder">
+            <h1>Top Rated</h1>
+            <div
+                class="cardHolder"
+                infiniteScroll
+                [infiniteScrollDistance]="2"
+                [infiniteScrollThrottle]="50"
+                (scrolled)="onScroll()"
+            >
                 <div class="movieCards"
                 (click)="openDialog(movie)"
                 *ngFor="let movie of topRatedList"

@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialExampleModule } from './material.module';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { MatIconModule } from '@angular/material/icon';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -100,8 +100,8 @@ export class MovieServiceService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getMovieList(inputSelector: any) {
-    return this.http.get<MovieList>(this.movieApi+inputSelector+this.apiKey).pipe(
+  getMovieList(inputSelector: any, pageNum: number) {
+    return this.http.get<MovieList>(this.movieApi+inputSelector+this.apiKey+'&page='+pageNum).pipe(
       map(({ results }: MovieList) => {
         return results.map((movie: singleFromList) => {
           const eachMovies: setMovie = {

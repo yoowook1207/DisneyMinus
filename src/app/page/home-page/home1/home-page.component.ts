@@ -15,6 +15,7 @@ import { MovieItemComponent } from '../../movie-item/movie-item.component';
 export class HomePageComponent implements OnInit {
   popularList!: any;
   topRatedList!: any;
+  infinitePageNum: number = 1
 
   constructor(
     public movieSearch: MovieServiceService,
@@ -25,10 +26,10 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieSearch
-      .getMovieList('popular')
+      .getMovieList('popular', 1)
       .subscribe((e) => (this.popularList = e));
     this.movieSearch
-      .getMovieList('top_rated')
+      .getMovieList('top_rated', 1)
       .subscribe((e) => (this.topRatedList = e));
   }
 
@@ -42,5 +43,12 @@ export class HomePageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe();
+  }
+
+  onScroll() {
+    this.infinitePageNum = this.infinitePageNum +1
+    this.movieSearch
+      .getMovieList('top_rated', this.infinitePageNum)
+      .subscribe((e) => (this.topRatedList = this.topRatedList.concat(e)));
   }
 }
