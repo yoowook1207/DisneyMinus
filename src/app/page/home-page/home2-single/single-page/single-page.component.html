@@ -1,0 +1,57 @@
+<app-header class="header"></app-header>
+<div class="movieDetailPage">
+  <div class="videoContainer">
+    <img class="logo" src="{{ logoUrl }}" />
+    <iframe
+      class="video"
+      [src]="videoUrl | safeUrl"
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay"
+    >
+    </iframe>
+  </div>
+  <div class="pageContainer">
+    <h1 class="title">{{ setMovie.title }} <span class="year">({{ setMovie.release_date | date: 'yyyy'}})</span></h1>
+    <!-- <p>{{ fromId }}</p> -->
+    <div class="infoBox">
+      <p class="date">{{ setMovie.release_date | date: 'yyyy/MM/dd'}}</p>
+      <p>
+        <span *ngFor="let g of setMovie.genre" class="genre">{{ g }}</span>
+      </p>
+      <p>{{ setMovie.runtime }} min</p>
+      <p>{{ setMovie.language }}</p>
+    </div>
+    <div class="userCon">
+      <p><span class="voteScore">{{ setMovie.voteScore }}</span> <span>/100</span></p>
+      <div class="iconHolder">    
+        <mat-icon class="favIcon">star_border</mat-icon>
+        <p class="hoverFav">add to favorite</p>
+      </div>
+      <div class="iconHolder">    
+        <a class="watchIcon" href="{{ setMovie.whereToWatch }}" target="_blank"><mat-icon>play_circle_outline</mat-icon></a>
+        <p class="hoverText">where to watch</p>
+      </div>
+
+    </div>
+    <div class="casting">
+      <p class="title2">Castings</p>
+      <div class="mainCastings">
+        <div class="castingHolder" *ngFor="let cast of castingList">
+          <img class="castingPic" src="https://image.tmdb.org/t/p/original{{cast.profile_path}}">
+          <div class="castingRole">
+            <span class="mainName">{{cast.name}}</span>
+            <span class="mainCharacter"> / {{cast.character}} </span>
+          </div>
+        </div>
+      </div>
+      <p (click)="showCasting()" [hidden]="isCastBtnShow" class="gray"><span *ngFor="let actor of castingList" class="gray"><span class="actorName">{{actor.name}}</span> / {{actor.character}} </span> ...see more</p>
+      <p (click)="showCasting()" [hidden]="isCastingShow"><span *ngFor="let actor of castingListDetailed" class="gray"><span class="actorName">{{actor.name}}</span> / {{actor.character}} </span></p>
+    </div>
+    <div class="movieText">
+      <p class="title2">Overview</p>
+      <p class="tagline">{{ setMovie.tagline }}</p>
+      <p class="description">{{ setMovie.description }}</p>
+    </div>
+  </div>
+</div>

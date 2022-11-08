@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, single, tap } from 'rxjs/operators';
-import { MovieList, Movie, setMovie, singleFromList } from '../../movie.interface';
+import { map, single, tap, } from 'rxjs/operators';
+import { MovieList, Movie, setMovie, singleFromList, imgList } from '../../movie.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
@@ -116,6 +116,7 @@ export class MovieServiceService {
               return this.genreList.filter(e => e.id==x).map(e => e.name)[0]
             }),
             voteScore: movie.vote_average,
+            backdrop: 'https://image.tmdb.org/t/p/original' + movie.backdrop_path,
           };
           return eachMovies;
         });
@@ -128,6 +129,45 @@ export class MovieServiceService {
   }
 
   getCredits(movieId: number) {
-    return this.http.get<any>(this.movieApi+movieId+'/credits'+this.apiKey)
+    return this.http.get<any>(this.movieApi+movieId+'/credits'+this.apiKey).pipe(
+      map(({cast}:any)=> {
+        return cast.map((actor: any) => {
+          const profile: any = {
+            name: actor.name,
+            character: actor.character,
+            profile_path: actor.profile_path,
+            credit_id: actor.credit_id
+          }
+          return profile;
+        })
+      })
+    )
   }
+
+  getSingleMovie(movieId: number) {
+    return this.http.get<Movie>(this.movieApi+movieId+this.apiKey).pipe(
+      map((movie: Movie) => {
+        return {
+          id:movie.id,
+          imdb_id: movie.imdb_id,
+          title: movie.title,
+          release_date: movie.release_date,
+          runtime: movie.runtime,
+          language: movie.original_language,
+          voteScore: Math.round(movie.vote_average*10),
+          description: movie.overview,
+          posterUrl: 'https://image.tmdb.org/t/p/original' + movie.poster_path,
+          genre: movie.genres!.map(e=> {return e.name}),
+          tagline: movie.tagline,
+          backdrop: 'https://image.tmdb.org/t/p/original' + movie.backdrop_path,
+          whereToWatch: "https://www.themoviedb.org/movie/" + movie.id + ' ' + movie.title + "/watch?locale=US"
+        }
+      })
+    )
+  }
+
+  getLogo(movieId: number) {
+    return this.http.get<imgList>(this.movieApi+movieId+'/images'+this.apiKey)
+  }
+
 }

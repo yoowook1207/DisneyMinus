@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MovieServiceService } from '../../../services/tmdb/movie-service.service';
-import { MovieItemComponent } from '../../movie-item/movie-item.component';
+import { MovieItemComponent } from '../movie-item/movie-item.component';
 
 @Component({
   selector: 'app-home-page',
@@ -38,7 +36,7 @@ export class HomePageComponent implements OnInit {
       maxWidth: '1080px',
       maxHeight: '1080px',
       width: '75vw',
-      height: '60vh',
+      height: '65vh',
       data: x,
     });
 

@@ -1,0 +1,182 @@
+.header {
+    position: sticky;
+    top:0;
+    width: 100%;
+    z-index: 2;
+}
+
+.movieDetailPage {
+    height: 100vh;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+.logo{
+    opacity: 0.7;
+    position: absolute;
+    bottom: 15%;
+    left: 1%;
+    z-index: 2;
+    width: 33%;
+    max-width: 360px;
+}
+
+.videoContainer {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 1080px;
+    position: relative;
+}
+
+.video {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.pageContainer {
+    border-top: 5px groove gray;
+    // padding: 15px;
+}
+
+.title {
+    font-size: 32px;
+    padding: 10px 10px 0 10px;
+    font-weight: 500;
+}
+
+.year {
+    font-size: 24px;
+    color: gray;
+}
+
+.infoBox {
+    display: flex;
+    gap: 10px;
+    padding: 0 10px 0 10px;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.genre {
+    border: 1px solid #fff;
+    margin-right: 3px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.userCon {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(20, 20, 20);
+    padding: 10px;
+    gap: 20px;
+}
+
+.voteScore {
+    font-size: 24px;
+}
+
+.iconHolder {
+    position:relative
+}
+
+.favIcon:hover + .hoverFav {
+    display: block;
+}
+
+.hoverFav {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    left: -120%;
+    background-color: rgb(30,30,30);
+    padding: 5px;
+    width: 95px;
+}
+
+.watchIcon:hover + .hoverText {
+    display: block;
+}
+
+.hoverText {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    left: -120%;
+    background-color: rgb(30,30,30);
+    padding: 5px;
+    width: 95px;
+}
+
+.casting {
+    padding: 10px 10px 0 10px;
+}
+
+.mainCastings {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+.castingHolder {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100px;
+    align-items: flex-start;
+}
+
+.castingPic {
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.castingRole {
+    width: 100%;
+}
+
+.mainName {
+    color: white;
+    font-size: 14px;
+}
+
+.mainCharacter {
+    color: gray;
+    font-size: 12px;
+}
+
+.gray {
+    color: gray;
+}
+
+.actorName{
+    color:white;
+}
+
+.movieText {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(20, 20, 20);
+    padding: 10px;
+}
+
+.title2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 18px;
+    font-style: italic;
+    color:gray
+}
+
+.description {
+    font-size: 16px;
+}

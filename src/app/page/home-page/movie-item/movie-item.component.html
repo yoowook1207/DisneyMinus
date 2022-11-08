@@ -1,0 +1,24 @@
+<div class="singleModal">
+    <div class="dialogHeader">
+        <p class="title">{{data.movieTitle}}</p>
+        <mat-icon class="closeBtn" (click)="onNoClick()">close</mat-icon>
+    </div>
+
+    <div class="backdropContainer">
+        <img class="logo" src="{{ logoUrl }}" />
+        <img class="backdrop" src={{data.backdrop}}>
+    </div>
+
+    <div class="infoContainer">
+        <div class="datePopularity">
+            <p><span class="gray">Released: </span> {{data.release_date}}</p>
+            <p class="gray"> Genres: <span *ngFor="let gen of data.genreID">{{gen}}  </span></p>
+        </div>
+
+        <p class="summary gray">Summary</p>
+        <p class="description">{{data.description}}</p>
+    </div>
+    <div class="btnHolder">
+        <button class="detailBtn" routerLink="../home/movie" (click)="onNoClick()" [queryParams]="{ id: id }">Details</button>
+    </div>
+</div>

@@ -5,7 +5,6 @@
     padding: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid gray;
-    z-index: 1;
     display: flex;
     justify-content: space-between;
 }
@@ -16,7 +15,6 @@
 }
 
 .logInBtn {
-    background-color: transparent;
     color: white;
     border: none;
     text-decoration: none;
@@ -24,7 +22,6 @@
 }
 
 .loggedInBox a {
-    background-color: transparent;
     color: white;
     border: none;
     text-decoration: none;

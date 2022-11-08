@@ -1,3 +1,42 @@
+export interface imgList {
+  backdrops?: (BackdropsEntityOrPostersEntity)[] | null;
+  id: number;
+  logos?: (LogosEntity)[] | null;
+  posters?: (BackdropsEntityOrPostersEntity)[] | null;
+}
+export interface BackdropsEntityOrPostersEntity {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1?: string | null;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+export interface LogosEntity {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+
+export interface singlePageMovie {
+  id: number;
+  imdb_id: number;
+  title: string;
+  release_date: string;
+  runtime: number;
+  language: string;
+  voteScore: number;
+  description: string;
+  posterUrl: string;
+  genre: string[];
+  tagline: string;
+}
+
 export interface setMovie {
   id: number;
   movieTitle: string;
@@ -8,6 +47,7 @@ export interface setMovie {
   description: string;
   genreID: any[]
   voteScore: number;
+  backdrop: string;
 }
 
 export interface MovieList {
