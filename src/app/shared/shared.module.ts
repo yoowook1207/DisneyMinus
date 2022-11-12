@@ -10,11 +10,13 @@ import { FormsModule } from '@angular/forms';
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
-    RouterModule,
     FormsModule,
+    RouterModule,
+
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    RouterModule,
   ]
 })
 export class SharedModule { }

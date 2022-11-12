@@ -8,21 +8,21 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('../page/home-page/lazy-home/lazy-home.module').then(
+      import('../page/home-page/lazy-home.module').then(
         (data) => data.LazyHomeModule
       ),
   },
   {
     path: 'login',
     loadChildren: () =>
-      import('../page/login-page/lazy-login/lazy-login.module').then(
+      import('../page/login-page/lazy-login.module').then(
         (data) => data.LazyLoginModule
       ),
   },
   {
     path: 'register',
     loadChildren: () =>
-      import('../page/register-page/lazy-register/lazy-register.module').then(
+      import('../page/register-page/lazy-register.module').then(
         (data) => data.LazyRegisterModule
       ),
   },

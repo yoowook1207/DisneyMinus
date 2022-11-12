@@ -19,6 +19,10 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+// import { CoreModule } from './core/core.module';
+// import { AuthReducer } from './Ngrx/Auth/auth.reducers';
+// import { AuthEffects } from './Ngrx/Auth/auth.effects';
 
 
 @NgModule({
@@ -29,6 +33,7 @@ import { SharedModule } from './shared/shared.module';
     LandingPageComponent,
   ],
   imports: [
+    // CoreModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -39,7 +44,8 @@ import { SharedModule } from './shared/shared.module';
     MaterialExampleModule,
     ReactiveFormsModule,
     MatIconModule,
-    SharedModule
+    SharedModule,
+    // StoreModule.forRoot({ auth: AuthReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent]
