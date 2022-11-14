@@ -21,9 +21,12 @@ export class MovieItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.data)
     this.movieSearch.getLogo(this.data.id).subscribe((e) => {
       let imgPath = e.logos?.filter( e=> e.iso_639_1 == 'en')[0]
-      this.logoUrl = 'https://image.tmdb.org/t/p/original' + imgPath?.file_path
+      if(imgPath) {
+        this.logoUrl = 'https://image.tmdb.org/t/p/original' + imgPath?.file_path
+      }
     });
   }
 

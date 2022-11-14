@@ -37,11 +37,11 @@
     <div class="casting">
       <p class="title2">Castings</p>
       <div class="mainCastings">
-        <div class="castingHolder" *ngFor="let cast of castingList">
-          <img class="castingPic" src="https://image.tmdb.org/t/p/original{{cast.profile_path}}">
+        <div class="castingHolder" *ngFor="let cast of castingList" (click)="creditDetailPage(cast)">
+          <img *ngIf="cast.profile_path" class="castingPic" src="https://image.tmdb.org/t/p/original{{cast.profile_path}}" alt="{{cast.name}}">
+          <img *ngIf="!cast.profile_path" class="castingPic" src="../../../../assets/img/nopicpng.png" alt="{{cast.name}}">
           <div class="castingRole">
-            <span class="mainName">{{cast.name}}</span>
-            <span class="mainCharacter"> / {{cast.character}} </span>
+            <p class="mainName">{{cast.name}}</p>
           </div>
         </div>
       </div>

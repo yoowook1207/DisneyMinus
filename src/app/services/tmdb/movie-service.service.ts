@@ -170,4 +170,12 @@ export class MovieServiceService {
     return this.http.get<imgList>(this.movieApi+movieId+'/images'+this.apiKey)
   }
 
+  getCreditDetails(credit_id: any) {
+    return this.http.get<any>('https://api.themoviedb.org/3/credit/'+credit_id+this.apiKey)
+  }
+
+  getActorsMovies(person_id: any) {
+    return this.http.get<any>('https://api.themoviedb.org/3/person/'+person_id+'/movie_credits'+this.apiKey)
+  }
+
 }

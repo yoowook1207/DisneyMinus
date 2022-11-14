@@ -1,7 +1,3 @@
-.header {
-  position: sticky;
-}
-
 .registerMain {
   width: 100%;
 }
@@ -9,6 +5,8 @@
 .registerContainer {
   max-width: 375px;
   margin: 0 auto;
+  background-color: rgb(25,25,40);
+  padding: 30px;
 }
 
 .registerContainer p {

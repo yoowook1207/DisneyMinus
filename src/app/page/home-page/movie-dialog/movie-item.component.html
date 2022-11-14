@@ -5,7 +5,7 @@
     </div>
 
     <div class="backdropContainer">
-        <img class="logo" src="{{ logoUrl }}" />
+        <img *ngIf="logoUrl != ''" class="logo" src="{{ logoUrl }}" />
         <img class="backdrop" src={{data.backdrop}}>
     </div>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Movie, singlePageMovie } from 'src/app/movie.interface';
 import { MovieServiceService } from 'src/app/services/tmdb/movie-service.service';
 
@@ -39,7 +39,8 @@ export class SinglePageComponent implements OnInit {
 
   constructor(
     public movieSearch: MovieServiceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private readonly router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -76,5 +77,9 @@ export class SinglePageComponent implements OnInit {
   showCasting() {
     this.isCastingShow = !this.isCastingShow;
     this.isCastBtnShow = !this.isCastBtnShow;
+  }
+
+  creditDetailPage(cast: any) {
+    this.router.navigate(['/home/credit', cast.credit_id]);
   }
 }

@@ -139,11 +139,13 @@
 
 .castingRole {
     width: 100%;
+    display: flex;
 }
 
 .mainName {
     color: white;
     font-size: 14px;
+    text-align: center;
 }
 
 .mainCharacter {

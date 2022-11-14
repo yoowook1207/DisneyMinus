@@ -3,7 +3,7 @@ import {
   MatDialog,
 } from '@angular/material/dialog';
 import { MovieServiceService } from '../../../services/tmdb/movie-service.service';
-import { MovieItemComponent } from '../movie-item/movie-item.component';
+import { MovieItemComponent } from '../movie-dialog/movie-item.component';
 
 @Component({
   selector: 'app-home-page',

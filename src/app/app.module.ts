@@ -10,7 +10,7 @@ import { HomePageComponent } from './page/home-page/home1/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { MovieItemComponent } from './page/home-page/movie-item/movie-item.component';
+import { MovieItemComponent } from './page/home-page/movie-dialog/movie-item.component';
 import { LandingPageComponent } from './page/landing-page/landing-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
