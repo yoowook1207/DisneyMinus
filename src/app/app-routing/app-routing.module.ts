@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from '../page/landing-page/landing-page.component';
+import { MoviePreloadingStrategy } from '../core/preloading-strategies/movie.preloading';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  {
+    path: 'welcome',
+    loadChildren: () =>
+      import('../page/landing-page/lazy-landing.module').then(
+        (data) => data.LazyLandingModule
+      ),
+  },
   {
     path: 'home',
     loadChildren: () =>
@@ -25,12 +31,22 @@ const routes: Routes = [
       import('../page/register-page/lazy-register.module').then(
         (data) => data.LazyRegisterModule
       ),
+    data: { preload: true, delay: 1000 },
   },
+  { path: '', redirectTo: 'welcome', pathMatch:'full'},
 ];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: MoviePreloadingStrategy,
+      scrollPositionRestoration: 'enabled',
+      scrollOffset: [0, 0],
+      anchorScrolling: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

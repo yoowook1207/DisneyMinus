@@ -29,7 +29,7 @@ export class MovieItemGuard implements CanLoad, CanActivate {
     ) {
       return true;
     } else {
-      this.router.navigate(['/register/step4'], {
+      this.router.navigate(['/home/homepage'], {
         queryParams: { returnUrl: state.url },
       });
       return false;
@@ -44,7 +44,8 @@ export class MovieItemGuard implements CanLoad, CanActivate {
     ) {
       return true;
     } else {
-      this.router.navigate(['/register/step4']);
+      // this.router.navigate(['/register/step4']);
+      this.router.navigate(['/home/homepage']);
       return false;
     }
   }

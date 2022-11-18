@@ -8,7 +8,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthNgrxService } from 'src/app/Ngrx/Auth/auth-ngrx.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -37,7 +39,9 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly router: Router,
+    private readonly authService: AuthNgrxService,
   ) {}
 
   ngOnInit(): void {
@@ -84,16 +88,14 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.term.value) {
-      this.showTermError = false;
-    }
-  }
-
-  filledAll = () => {
     if (this.email.valid && this.pwd.valid && this.term.value) {
-      return true;
-    } else return false;
-  };
+      this.authService.addUserInfo(this.regFirstPage.value)
+      this.router.navigate(['/register/step2'])
+      console.log(this.regFirstPage.value)
+    } else if (!this.term.value) {
+      this.showTermError = false;
+    } 
+  }
 
   filledFalse = () => {
     alert("Please check/fill the all information")

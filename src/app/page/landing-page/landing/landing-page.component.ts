@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {
   FormBuilder,
   Validators,
   FormGroup,
   FormControl,
 } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ProdTitle } from 'src/app/core/core.module';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,7 +15,12 @@ import {
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnInit {
-  constructor(public fb: FormBuilder) {}
+  constructor(
+    public fb: FormBuilder,
+    private readonly router: Router,
+    private readonly titleService: Title,
+    @Inject(ProdTitle) private readonly prodTitle: string
+  ) {}
   checkUser!: FormGroup;
   newOrNot: string = '';
 
@@ -21,6 +29,8 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle(`${this.prodTitle}-landing-page`);
+
     this.checkUser = this.fb.group({
       email: [
         '',
@@ -31,12 +41,20 @@ export class LandingPageComponent implements OnInit {
 
   ngDoCheck() {
     // if email is exist, 'login', else if email is not exist, 'register'
-    if (this.email.valid && (this.email.dirty || this.email.touched)) {
-      this.newOrNot = 'register';
-      // login/loginpage
-    }
+    // if (this.email.valid && (this.email.dirty || this.email.touched)) {
+    //   this.newOrNot = '/register';
+    //   // login/loginpage
+    // }
     // else if (this.email.valid && (this.email.dirty || this.email.touched)) {
     //   this.newOrNot = 'register/registration';
     // }
+  }
+
+  registerPage() {
+    if (this.email.valid && (this.email.dirty || this.email.touched)) {
+      this.router.navigate(['/register/step1']);
+    } else {
+      alert('Please check your email address!');
+    }
   }
 }

@@ -22,8 +22,11 @@
     "@angular/router": "^14.2.0",
     "@angular/youtube-player": "^14.2.6",
     "@auth0/angular-jwt": "^5.1.0",
+    "@ngrx/effects": "^14.3.2",
     "@ngrx/store": "^14.3.2",
+    "@ngrx/store-devtools": "^14.3.2",
     "ngx-infinite-scroll": "^14.0.0",
+    "ngx-logger": "^5.0.11",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

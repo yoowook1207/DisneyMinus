@@ -1,10 +1,13 @@
-import { AuthService } from '../services/auth/auth.service';
+import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { AuthNgrxService } from '../Ngrx/Auth/auth-ngrx.service';
 
-export function appInitializer(authService: AuthService) {
+export function appInitializer(authService: AuthNgrxService) {
   console.log('this is Initialization');
+
   return () =>
-    new Promise((resolve) => {
-      // attempt to refresh token on app start up to auto authenticate
-      authService.refreshToken().subscribe().add(resolve);
+    new Promise<void>((resolve, reject) => {
+      authService.refreshToken();
+      resolve();
     });
 }

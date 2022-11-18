@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppUserAuth, UserRole } from '../interfaces/user-auth.interface';
 import { AppUser } from '../interfaces/user-login.interface';
 import { MovieServiceService } from '../tmdb/movie-service.service';
 import { AppUserRegister, UserInfo } from '../interfaces/user-signup.interface';
-import { AuthDto } from '../interfaces/authDto.interface';
 import { AUTHSERVER } from 'src/app/core/core.module';
 
-@Injectable()
-export class AuthService {
+@Injectable({
+  providedIn: 'root',
+})
+export class WithLocalstorageService {
   private jwtHelper = new JwtHelperService();
   private userSubject$!: BehaviorSubject<AppUserAuth>;
   user$!: Observable<AppUserAuth>;
@@ -31,7 +32,7 @@ export class AuthService {
   constructor(
     private readonly router: Router,
     private readonly http: HttpClient,
-    private readonly movieService: MovieServiceService,
+    private readonly tmdbService: MovieServiceService,
     @Inject(AUTHSERVER) private readonly authServerPath: string
   ) {
     this.userSubject$ = new BehaviorSubject<AppUserAuth>({});
@@ -39,12 +40,15 @@ export class AuthService {
   }
 
   /* SignIn */
-  login(appUser: AppUser): Observable<AuthDto> {
+  login(appUser: AppUser): Observable<{ accessToken: string }> {
     return this.http
-      .post<AuthDto>(`${this.authServerPath}/auth/signin`, appUser)
+      .post<{ accessToken: string }>(
+        `${this.authServerPath}/auth/signin`,
+        appUser
+      )
       .pipe(
-        tap(({ accessToken, role }: AuthDto) => {
-          this.setUserValueByToken({ accessToken, role });
+        tap(({ accessToken }: { accessToken: string }) => {
+          this.setUserValueByToken({ accessToken });
 
           this.router.navigate(['/movies']);
         }),
@@ -57,7 +61,6 @@ export class AuthService {
   /* SignOut */
   logout() {
     localStorage.removeItem('access_token');
-    // this.movieService.setMyApiKey = '';
 
     this.stopRefreshTokenTimer();
 
@@ -72,7 +75,7 @@ export class AuthService {
       ...userInfo,
     };
   }
-  signup(userRole: { role: UserRole }): Observable<AuthDto | string> {
+  sighup(userRole: { role: UserRole }): Observable<any> {
     this.appUserRegister = {
       ...this.appUserRegister,
       ...userRole,
@@ -83,13 +86,13 @@ export class AuthService {
       return of('Register failed');
 
     return this.http
-      .post<AuthDto>(
-        [this.authServerPath, 'auth', 'register'].join('/'),
+      .post<{ accessToken: string }>(
+        [this.authServerPath, 'auth', 'signup'].join('/'),
         this.appUserRegister
       )
       .pipe(
-        tap(({ accessToken, role }: AuthDto) => {
-          this.setUserValueByToken({ accessToken, role });
+        tap(({ accessToken }: { accessToken: string }) => {
+          this.setUserValueByToken({ accessToken });
           this.router.navigate(['/movies']);
         }),
         catchError((error) => {
@@ -99,18 +102,18 @@ export class AuthService {
   }
 
   /* upgrade Uer Permission */
-  upgradePermission(userRole: { role: UserRole }): Observable<AuthDto> {
+  upgradePermission(userRole: { role: UserRole }) {
     console.log('Change permission class to: ', userRole.role);
     this.stopRefreshTokenTimer();
 
     return this.http
-      .patch<AuthDto>(
+      .patch<{ accessToken: string }>(
         [this.authServerPath, 'auth', 'userupdate'].join('/'),
         userRole
       )
       .pipe(
-        tap(({ accessToken, role }: AuthDto) => {
-          this.setUserValueByToken({ accessToken, role });
+        tap(({ accessToken }: { accessToken: string }) => {
+          this.setUserValueByToken({ accessToken });
           this.router.navigate(['/movies']);
         }),
         catchError((error) => {
@@ -119,23 +122,23 @@ export class AuthService {
       );
   }
 
-  //* helper methods;
-  refreshToken(): Observable<AuthDto | string> {
+  // helper methods;
+  refreshToken(): Observable<any> {
     const currentToken = localStorage.getItem('access_token');
     if (!currentToken) {
       this.router.navigate(['/']);
       return of('err');
     }
 
-    const { id, username, email, tmdb_key } =
+    const { id, username, email, role, tmdb_key } =
       this.jwtHelper.decodeToken(currentToken);
-    const user = { id, username, email, tmdb_key };
+    const user = { id, username, email, role, tmdb_key };
 
     return this.http
-      .post<AuthDto>(`${this.authServerPath}/auth/refresh-token`, user)
+      .post<any>(`${this.authServerPath}/auth/refresh-token`, user)
       .pipe(
-        tap(({ accessToken, role }: AuthDto) => {
-          this.setUserValueByToken({ accessToken, role });
+        tap(({ accessToken }: { accessToken: string }) => {
+          this.setUserValueByToken({ accessToken });
         })
       );
   }
@@ -155,13 +158,11 @@ export class AuthService {
   }
 
   /* reuseable code in for signin, signup, refresh, update */
-  private setUserValueByToken = ({ accessToken, role }: AuthDto) => {
+  private setUserValueByToken = ({ accessToken }: { accessToken: string }) => {
     localStorage.setItem('access_token', accessToken);
 
-    const { id, username, email, tmdb_key, exp } =
+    const { id, username, email, role, tmdb_key, exp } =
       this.jwtHelper.decodeToken(accessToken);
-
-    // this.movieService.setMyApiKey = tmdb_key;
 
     const user = {
       ...{ id, username, email, role, tmdb_key },

@@ -18,6 +18,7 @@
           placeholder="Email"
         />
         <button
+          (click)="registerPage()"
           routerLink="{{ newOrNot }}"
           [queryParams]="{ email: email.value }"
         >
