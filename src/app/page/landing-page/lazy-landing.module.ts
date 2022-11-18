@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LandingPageComponent } from './landing/landing-page.component';
 
-const routes: Routes = [{path: 'welcome', component: LandingPageComponent}]
+const routes: Routes = [{path: '', component: LandingPageComponent}]
 
 @NgModule({
   declarations: [

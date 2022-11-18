@@ -41,7 +41,7 @@ export class AuthService {
   /* SignIn */
   login(appUser: AppUser): Observable<AuthDto> {
     return this.http
-      .post<AuthDto>(`${this.authServerPath}/auth/signin`, appUser)
+      .post<AuthDto>(`${this.authServerPath}/user/signin`, appUser)
       .pipe(
         tap(({ accessToken, role }: AuthDto) => {
           this.setUserValueByToken({ accessToken, role });
@@ -77,22 +77,27 @@ export class AuthService {
       ...this.appUserRegister,
       ...userRole,
     };
-    const { username, password, email, role, tmdb_key } = this.appUserRegister;
-
-    if (!username || !password || !email || !role || !tmdb_key)
+    const { username, pwd, email, role, tmdb_key } = this.appUserRegister;
+    console.log(this.appUserRegister)
+    if (!username || !pwd || !email || !role || !tmdb_key){
+      console.log('failed!')
       return of('Register failed');
+    }
+
 
     return this.http
       .post<AuthDto>(
-        [this.authServerPath, 'auth', 'register'].join('/'),
+        [this.authServerPath, 'user', 'register'].join('/'),
         this.appUserRegister
       )
       .pipe(
         tap(({ accessToken, role }: AuthDto) => {
+          console.log('go home')
           this.setUserValueByToken({ accessToken, role });
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/home']);
         }),
         catchError((error) => {
+          console.log('wrong!!')
           return throwError('SomeThing Wrong during sign up!', error);
         })
       );
@@ -105,7 +110,7 @@ export class AuthService {
 
     return this.http
       .patch<AuthDto>(
-        [this.authServerPath, 'auth', 'userupdate'].join('/'),
+        [this.authServerPath, 'user', 'userupdate'].join('/'),
         userRole
       )
       .pipe(
@@ -132,7 +137,7 @@ export class AuthService {
     const user = { id, username, email, tmdb_key };
 
     return this.http
-      .post<AuthDto>(`${this.authServerPath}/auth/refresh-token`, user)
+      .post<AuthDto>(`${this.authServerPath}/user/refresh-token`, user)
       .pipe(
         tap(({ accessToken, role }: AuthDto) => {
           this.setUserValueByToken({ accessToken, role });

@@ -1,0 +1,6 @@
+{
+    "/user": {
+      "target": "http://localhost:4231",
+      "secure": false
+    }
+  }

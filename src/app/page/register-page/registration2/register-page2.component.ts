@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AuthNgrxService } from 'src/app/Ngrx/Auth/auth-ngrx.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { UserRole } from 'src/app/services/interfaces/user-auth.interface';
+
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page2',
@@ -8,14 +15,44 @@ import { UserRole } from 'src/app/services/interfaces/user-auth.interface';
   styleUrls: ['./register-page2.component.scss'],
 })
 export class RegisterPage2Component implements OnInit {
-  selectedColumn: 'USER' | 'SUPERUSER' | 'ADMIN' = 'ADMIN';
+  applyTmdbApiKey =
+  'https://developers.themoviedb.org/3/getting-started/authentication';
+  form!: UntypedFormGroup;
 
-  constructor(private readonly authService: AuthService) {}
+  get username() {
+    return this.form.get('username');
+  }
+  get tmdb_key() {
+    return this.form.get('tmdb_key');
+  }
 
-  ngOnInit(): void {}
+  constructor(
+    private fb: UntypedFormBuilder,
+    private readonly router: Router,
+    private readonly authService: AuthNgrxService,
+    private readonly authServiceOrg: AuthService
 
-  nextStep() {
+  ) {}
 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      username: [''],
+      tmdb_key: ['', Validators.minLength(30)],
+    })
+  }
+
+  errorMessageUsername() {
+    return this.username?.hasError('required') ? 'You need a username' : '';
+  }
+
+  gotoApplyApiKey() {
+    window.location.href = this.applyTmdbApiKey;
+  }
+
+  onSubmit() {
+    // this.authService.addUserInfo(this.form.value);
+    this.authServiceOrg.addUserInfo(this.form.value);
+    this.router.navigate(['/register/step3']);
   }
 }
 

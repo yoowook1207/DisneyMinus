@@ -52,7 +52,7 @@ export class LandingPageComponent implements OnInit {
 
   registerPage() {
     if (this.email.valid && (this.email.dirty || this.email.touched)) {
-      this.router.navigate(['/register/step1']);
+      this.router.navigate(['/register/step1'],{queryParams: {email: this.email.value}});
     } else {
       alert('Please check your email address!');
     }

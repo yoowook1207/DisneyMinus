@@ -20,6 +20,12 @@
   flex-wrap: wrap;
 }
 
+.roleContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .pwdHolder {
   width: 100%;
 }

@@ -1,1 +1,7 @@
-<p>registration3 works!</p>
+<div class="roleContainer">
+  <div (click)="selectPlan('USER')">USER</div>
+  <div (click)="selectPlan('SUPERUSER')">SUPERUSER</div>
+  <div (click)="selectPlan('ADMIN')">ADMIN</div>
+</div>
+
+<button mat-raised-button (click)="handleNavigate()">Next</button>

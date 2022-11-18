@@ -61,8 +61,8 @@ export class AuthEffects {
       ofType(AuthActions.SendSignUpRequest),
       switchMap(({ role }: { role: UserRole }) => {
         return this.store.select(AuthSelectors.getUserRegisterInfo).pipe(
-          map(({ email, password, tmdb_key, username }) => {
-            return { email, password, tmdb_key, username, role };
+          map(({ email, pwd, tmdb_key, username }) => {
+            return { email, pwd, tmdb_key, username, role };
           })
         );
       }),

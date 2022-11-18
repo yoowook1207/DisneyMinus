@@ -33,15 +33,16 @@ export class RegisterPageComponent implements OnInit {
   get term(): FormControl {
     return this.regFirstPage.get('agreeTerm') as FormControl;
   }
-  // get role(): FormControl {
-  //   return this.regFirstPage.get('role') as FormControl;
-  // }
+  get role(): FormControl {
+    return this.regFirstPage.get('role') as FormControl;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private readonly router: Router,
     private readonly authService: AuthNgrxService,
+    private readonly authServiceOrg: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class RegisterPageComponent implements OnInit {
       this.fromEmail = params.get('email') || '';
     });
     this.regFirstPage = this.fb.group({
-      // role: '',
+      role: '',
       email: [
         this.fromEmail || '',
         [
@@ -84,17 +85,19 @@ export class RegisterPageComponent implements OnInit {
     if (this.term.value) {
       this.showTermError = true;
     }
-    // console.log(this.regFirstPage.value)
   }
 
   onSubmit() {
     if (this.email.valid && this.pwd.valid && this.term.value) {
-      this.authService.addUserInfo(this.regFirstPage.value)
+      // this.authService.addUserInfo(this.regFirstPage.value)
+      this.authServiceOrg.addUserInfo(this.regFirstPage.value)
       this.router.navigate(['/register/step2'])
       console.log(this.regFirstPage.value)
     } else if (!this.term.value) {
       this.showTermError = false;
-    } 
+    } else {
+      this.filledFalse()
+    }
   }
 
   filledFalse = () => {
