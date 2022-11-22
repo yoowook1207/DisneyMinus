@@ -1,27 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  isLoggedIn :boolean = true;
-  userAccountDisplay : string = " none";
-  loginDisplay : string = "block";
-  userName : string = "Sung"
-  constructor() { }
+  isLogin!: boolean;
+  username = '';
+  loginDisplay = 'block'
+  userAccountDisplay = 'block'
+  constructor(
+    private readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-
-    if(this.isLoggedIn) {
-      this.userAccountDisplay = "block"
-      this.loginDisplay = "none"
+    console.log(this.authService.userValue)
+    const { jwtToken, username } = this.authService.userValue;
+    if (jwtToken && username) {
+      this.isLogin = true;
+      this.username = username;
     } else {
-      this.userAccountDisplay = "none"
-      this.loginDisplay = "block"
+      this.isLogin = false;
     }
-    
+  }
+
+  signOut() {
+    if (window.confirm("Do you want to log out?")) {
+      this.authService.logout();
+      this.isLogin = false;
+      this.username = '';
+    }
   }
 }

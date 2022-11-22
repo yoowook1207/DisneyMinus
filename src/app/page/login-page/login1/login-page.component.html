@@ -7,11 +7,11 @@
         <form class="loginInfoContainer" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="emailPassword">
                 <input type="text" name="email" id="email" class="emailInput" placeholder="email" value={{fromEmail}} formControlName="email">
-                <input type="password" name="password" id="password" class="passwordInput" placeholder="password" formControlName="password">
+                <input type="password" name="password" id="password" class="passwordInput" placeholder="password" formControlName="pwd">
             </div>
-            <button class="submitBtn" routerLink={{nextPage}}>LOGIN</button>
+            <button class="submitBtn" >LOGIN</button>
         </form>
-        <p class="p-light-center">Don't have an account? click <a class="clickHere" routerLink="../../register/registration">HERE</a></p>
+        <p class="p-light-center">Don't have an account? click <a class="clickHere" routerLink="/register">HERE</a></p>
     </div>
     <div class="background"></div>
 </div>

@@ -1,10 +1,10 @@
 <div class="header">
     <img class="header-logo" src="../../assets/img/logo-white-s.png" routerLink="">
     <div>
-        <a class="logInBtn" [ngStyle]="{'display': loginDisplay}">Log In</a>
         <div class="loggedInBox" [ngStyle]="{'display': userAccountDisplay}">
-            <a id="myAccount">Log in</a>
-            <!-- <a id="logOut">Log Out</a> -->
+            {{username}}
+            <button *ngIf="!isLogin" class="black" id="myAccount" [routerLink]="['/login']">Log in</button>
+            <button *ngIf="isLogin" class="black" (click)="signOut()">Log out</button>
         </div>
     </div>
 </div>

@@ -36,7 +36,7 @@ export class RegisterPage2Component implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: [''],
+      username: ['', [Validators.maxLength(10),Validators.minLength(4)]],
       tmdb_key: ['', Validators.minLength(30)],
     })
   }

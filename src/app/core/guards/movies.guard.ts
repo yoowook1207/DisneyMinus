@@ -22,7 +22,7 @@ export class MoviesGuard implements CanLoad, CanActivate {
     if (jwtToken) {
       return true;
     } else {
-      this.router.navigate(['login'], {
+      this.router.navigate(['/login'], {
         queryParams: { returnUrl: state.url },
       });
       return false;

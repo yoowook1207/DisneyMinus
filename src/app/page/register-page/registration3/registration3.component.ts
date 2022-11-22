@@ -9,7 +9,7 @@ import { UserRole } from 'src/app/services/interfaces/user-auth.interface';
   styleUrls: ['./registration3.component.scss']
 })
 export class Registration3Component implements OnInit {
-  selectedColumn: 'USER' | 'SUPERUSER' | 'ADMIN' = 'ADMIN';
+  selectedColumn!: 'USER' | 'SUPERUSER' | 'ADMIN';
 
 
   constructor(
@@ -27,14 +27,16 @@ export class Registration3Component implements OnInit {
 
   handleNavigate() {
     const { jwtToken } = this.authServiceOrg.userValue;
-
+    if (!this.selectedColumn) {
+      alert('Select plan please!')
+      return
+    }
     if (jwtToken) {
       this.authServiceOrg.upgradePermission({
         role: UserRole[this.selectedColumn],
       })
       .subscribe();
     } else {
-      console.log('next')
       this.authServiceOrg.signup({ role: UserRole[this.selectedColumn] }).subscribe();
     }
   }

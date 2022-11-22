@@ -1,7 +1,43 @@
-<div class="roleContainer">
-  <div (click)="selectPlan('USER')">USER</div>
-  <div (click)="selectPlan('SUPERUSER')">SUPERUSER</div>
-  <div (click)="selectPlan('ADMIN')">ADMIN</div>
-</div>
+<div class="registerMain">
+  <div class="registerContainer">
+    <h2>Welcome to Disney-!</h2>
+    <p>Please choose the plan for you. You can change or cancel your subscription anytime.</p>
 
-<button mat-raised-button (click)="handleNavigate()">Next</button>
+    <div class="roleContainer">
+
+      <div (click)="selectPlan('USER')" [ngClass]="selectedColumn == 'USER' ? 'selected': 'role'">
+        <div class="roleTop">
+          <h1> BASIC </h1>
+          <p *ngIf="selectedColumn === 'USER'">$9.99/month</p>
+        </div>
+        <p>
+          BASIC plan explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida mi id ante finibus consectetur.
+        </p>
+      </div>
+
+      <div (click)="selectPlan('SUPERUSER')" [ngClass]="selectedColumn == 'SUPERUSER' ? 'selected': 'role'">
+        <div class="roleTop">
+          <h1> ADD ONE </h1>
+          <p *ngIf="selectedColumn === 'SUPERUSER'">$13.99/month</p>
+        </div>
+        <p>
+          ADD ONE plan explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida mi id ante finibus consectetur.
+        </p>
+        <!-- <div *ngIf="selectedColumn === 'SUPERUSER'">Selected</div> -->
+      </div>
+
+      <div (click)="selectPlan('ADMIN')" [ngClass]="selectedColumn == 'ADMIN' ? 'selected': 'role'">
+        <div class="roleTop">
+          <h1> DOUBLE UP </h1>
+          <p *ngIf="selectedColumn === 'ADMIN'">$15.99/month</p>
+        </div>
+        <p>
+          DOUBLE UP plan explanation. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida mi id ante finibus consectetur.
+        </p>
+        <!-- <div *ngIf="selectedColumn === 'ADMIN'">Selected</div> -->
+      </div>
+    </div>
+
+    <button mat-raised-button (click)="handleNavigate()" class="submitBtn">Next</button>
+  </div>
+</div>

@@ -13,10 +13,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Home3CreditComponent } from './home3-credit/home3-credit.component';
 import { CreditDetailResolver } from 'src/app/core/resolvers/creditDetail.resolver';
 import { ActorsMoviesResolver } from 'src/app/core/resolvers/actorsMovies.resolver';
+import { MovieItemGuard } from 'src/app/core/guards/movie-item.guard';
 
 const routes: Routes = [
   { path: 'homepage', component: HomePageComponent },
-  { path: 'movie', component: SinglePageComponent },
+  { path: 'movie', component: SinglePageComponent, canActivate: [MovieItemGuard] },
   {
     path: 'credit/:id',
     component: Home3CreditComponent,
@@ -25,6 +26,7 @@ const routes: Routes = [
       actorsMovies: ActorsMoviesResolver,
     },
   },
+  { path: '', redirectTo: 'homepage', pathMatch: 'full' },
 ];
 
 @NgModule({

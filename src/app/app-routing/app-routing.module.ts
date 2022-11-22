@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MoviePreloadingStrategy } from '../core/preloading-strategies/movie.preloading';
+import { MoviesGuard } from '../core/guards/movies.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       import('../page/home-page/lazy-home.module').then(
         (data) => data.LazyHomeModule
       ),
+      canActivate: [MoviesGuard]
   },
   {
     path: 'login',

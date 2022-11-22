@@ -1,0 +1,68 @@
+.registerMain {
+    width: 100%;
+  }
+  
+  .registerContainer {
+    max-width: 375px;
+    margin: 0 auto;
+    background-color: rgb(25,25,40);
+    padding: 30px;
+    min-height: 500px;
+  }
+
+  .registrationForm {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .matForm {
+    padding:0;
+  }
+
+  .formField {
+    width: 100%;
+    padding: 0;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 4px 4px 0 0;
+    padding: 0;
+}
+
+  input {
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    backdrop-filter: blur(50px);
+    background-color: rgb(49, 52, 62);
+    border: 1px solid transparent;
+    padding: 7px 12px;
+    box-sizing: border-box;
+    caret-color: aqua;
+    font-weight: 400;
+    font-family: "Avenir", "Century Gothic", sans-serif;
+  }
+
+  input:focus {
+    border: 1px solid rgba(249, 249, 249, 0.3);
+    outline: none;
+  }
+
+  input::placeholder {
+    color: #cacaca
+  }
+
+  .submitBtn {
+    padding: 0px 24px;
+    width: 100%;
+    height: 48px;
+    background-color: #0072d2;
+    border: 0;
+    border-radius: 0.25rem;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+  }

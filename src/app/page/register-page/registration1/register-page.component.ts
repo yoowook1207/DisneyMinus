@@ -89,6 +89,7 @@ export class RegisterPageComponent implements OnInit {
 
   onSubmit() {
     if (this.email.valid && this.pwd.valid && this.term.value) {
+      this.regFirstPage.value.pwd = this.pwd.value.password
       // this.authService.addUserInfo(this.regFirstPage.value)
       this.authServiceOrg.addUserInfo(this.regFirstPage.value)
       this.router.navigate(['/register/step2'])

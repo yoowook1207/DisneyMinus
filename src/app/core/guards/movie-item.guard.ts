@@ -29,9 +29,12 @@ export class MovieItemGuard implements CanLoad, CanActivate {
     ) {
       return true;
     } else {
+      if(window.confirm('Your plan is BASIC. Only ADD ONE or DOUBLE UP plans can access detailed page. Do you want to upgrade your plan?')) {
+        this.router.navigate(['/register/step3'])
+      } else {
       this.router.navigate(['/home/homepage'], {
         queryParams: { returnUrl: state.url },
-      });
+      });}
       return false;
     }
   }

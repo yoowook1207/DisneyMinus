@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ProdTitle } from 'src/app/core/core.module';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login-page',
@@ -24,23 +27,21 @@ export class LoginPageComponent implements OnInit {
     return this.loginForm.get('email') as FormControl;
   }
 
-  get password(): FormControl {
-    return this.loginForm.get('password') as FormControl;
+  get pwd(): FormControl {
+    return this.loginForm.get('pwd') as FormControl;
   }
-
-  nextPage: string = './';
-
-  testUser = {
-    email: 'yoowook1207@gmail.com',
-    password: 'Dbtjddnr9395!',
-  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly titleService: Title,
+    @Inject(ProdTitle) private readonly prodTitle: string
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle(`${this.prodTitle}-SignIn`);
+
     this.activatedRoute.queryParamMap.subscribe((params) => {
       this.fromEmail = params.get('email') || '';
     });
@@ -52,24 +53,16 @@ export class LoginPageComponent implements OnInit {
           Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
           Validators.required,
         ],
-        // [this.asyncCheckEmail]
       ],
-      password: [''],
+      pwd: ['', [Validators.required]],
     });
   }
 
-  ngDoCheck(): void {
-    if (this.password.value === this.testUser.password) {
-      this.nextPage = '../../home/homepage';
-    }
-    console.log(this.nextPage);
-  }
-
   onSubmit() {
-    if (this.email.value === '') {
-      alert('Please type your email');
-    } else if (this.password.value !== this.testUser.password) {
-      alert('Your email and password do not match!');
-    }
+    const credentialSignIn = {
+      email: this.email?.value,
+      pwd: this.pwd?.value,
+    };
+    this.authService.login(credentialSignIn).subscribe();
   }
 }

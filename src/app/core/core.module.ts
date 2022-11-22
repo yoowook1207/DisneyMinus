@@ -15,6 +15,7 @@ import {
   import { appInitializer } from './app.initializer';
   import { AuthWithLocalInterceptor } from './interceptors/auth-with-local.interceptor';
   import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { DragDrop } from '@angular/cdk/drag-drop';
   
   //* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ injection token
   export const TMDBAPIKEY = new InjectionToken<string>('');
@@ -54,7 +55,7 @@ import {
               router: Router,
               http: HttpClient,
               tmdbservice: MovieServiceService,
-              authpath: string
+              authpath: string,
             ) => {
               return usecookie
                 ? new WithCookieService(router, http, authpath)

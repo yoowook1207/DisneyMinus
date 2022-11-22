@@ -45,11 +45,10 @@ export class AuthService {
       .pipe(
         tap(({ accessToken, role }: AuthDto) => {
           this.setUserValueByToken({ accessToken, role });
-
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/home/homepage']);
         }),
-        catchError((error) => {
-          return throwError('SomeThing Wrong during sign in!', error);
+        catchError(() => {
+          return throwError(() => new Error('SomeThing Wrong during sign in!'));
         })
       );
   }
@@ -62,7 +61,7 @@ export class AuthService {
     this.stopRefreshTokenTimer();
 
     this.userSubject$.next({});
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
   }
 
   /* SignUp */
@@ -78,7 +77,6 @@ export class AuthService {
       ...userRole,
     };
     const { username, pwd, email, role, tmdb_key } = this.appUserRegister;
-    console.log(this.appUserRegister)
     if (!username || !pwd || !email || !role || !tmdb_key){
       console.log('failed!')
       return of('Register failed');
@@ -92,13 +90,11 @@ export class AuthService {
       )
       .pipe(
         tap(({ accessToken, role }: AuthDto) => {
-          console.log('go home')
           this.setUserValueByToken({ accessToken, role });
           this.router.navigate(['/home']);
         }),
         catchError((error) => {
-          console.log('wrong!!')
-          return throwError('SomeThing Wrong during sign up!', error);
+          return throwError(() => new Error('SomeThing Wrong during sign up!'+ error));
         })
       );
   }
@@ -161,6 +157,7 @@ export class AuthService {
 
   /* reuseable code in for signin, signup, refresh, update */
   private setUserValueByToken = ({ accessToken, role }: AuthDto) => {
+    console.log('tokenGen')
     localStorage.setItem('access_token', accessToken);
 
     const { id, username, email, tmdb_key, exp } =
@@ -172,6 +169,7 @@ export class AuthService {
       ...{ id, username, email, role, tmdb_key },
       jwtToken: accessToken,
     };
+    console.log(user)
     this.userSubject$.next(user);
     this.startRefreshTokenTimer(exp);
   };

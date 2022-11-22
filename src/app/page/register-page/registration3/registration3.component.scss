@@ -1,0 +1,73 @@
+.registerMain {
+    width: 100%;
+  }
+  
+  .registerContainer {
+    max-width: 375px;
+    margin: 0 auto;
+    background-color: rgb(25,25,40);
+    padding: 30px;
+  }
+
+  .roleContainer {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .role {
+    width: 100%;
+    border: 1px solid white;
+    padding: 10px;
+  }
+
+  .selected {
+    width: 100%;
+    border: 1px solid white;
+    background-color: #9dc6e8;
+    padding: 10px;
+    transition: .5s ease-out;
+  }
+
+  .roleTop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .selected h1 {
+    font-weight: 600;
+    color:rgb(49, 52, 62)
+  }
+
+  .selected p {
+    color:rgb(49, 52, 62)
+  }
+
+  .val_container {
+    height: 100%;
+    padding: 15px 1.875rem;
+    width: 100%;
+    color: black;
+    // @include flex();
+  }
+
+  .submitBtn {
+    margin-top: 24px;
+    padding: 0px 24px;
+    width: 100%;
+    height: 48px;
+    background-color: #0072d2;
+    border: 0;
+    border-radius: 0.25rem;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+  }
+  
+  .submitBtn:focus,
+  .submitBtn:hover {
+    background-color: #0082f0;
+    transition: background-color 0.2 ease-in-out;
+  }

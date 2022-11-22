@@ -1,28 +1,36 @@
-<form class="register_form" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your username</mat-label>
-      <input matInput formControlName="username" required />
-      <mat-error *ngIf="username?.invalid">{{
-        errorMessageUsername()
-      }}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Add your Tmdb Api_Key</mat-label>
-      <input matInput formControlName="tmdb_key" required />
-      <mat-error *ngIf="tmdb_key?.errors?.['required']">
-        We need your Tmdb Api Key!
-      </mat-error>
-      <mat-error
-        *ngIf="tmdb_key?.errors?.['minlength'] || tmdb_key?.errors?.['maxlength']"
+<div class="registerMain">
+  <div class="registerContainer">
+    <h2>Welcome to Disney-!</h2>
+    <p>Please Put your username and TMDB Key</p>
+    <form class="registrationForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="formField">
+        <input matInput formControlName="username" required placeholder="username"/>
+        <mat-error *ngIf="username?.errors?.['required']">
+          Please put username.
+        </mat-error>
+        <mat-error *ngIf="username?.errors?.['minlength'] || username?.errors?.['maxlength']" >{{
+          'username should be 4-10 letters'
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="formField">
+        <input matInput formControlName="tmdb_key" required  placeholder="TMDB Key"/>
+        <mat-error *ngIf="tmdb_key?.errors?.['required']">
+          We need your Tmdb Api Key!
+        </mat-error>
+        <mat-error
+          *ngIf="tmdb_key?.errors?.['minlength'] || tmdb_key?.errors?.['maxlength']"
+        >
+          Your tmdb_key not Valided!
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        [disabled]="!form.valid"
+        [ngClass]="{ inValidForm: !form.valid }"
+        class="submitBtn"
       >
-        Your tmdb_key not Valided!
-      </mat-error>
-    </mat-form-field>
-    <button
-      mat-raised-button
-      [disabled]="!form.valid"
-      [ngClass]="{ inValidForm: !form.valid }"
-    >
-      Next
-    </button>
-  </form>
+        Next
+      </button>
+    </form>
+  </div>
+</div>

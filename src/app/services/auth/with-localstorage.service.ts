@@ -10,6 +10,7 @@ import { AppUser } from '../interfaces/user-login.interface';
 import { MovieServiceService } from '../tmdb/movie-service.service';
 import { AppUserRegister, UserInfo } from '../interfaces/user-signup.interface';
 import { AUTHSERVER } from 'src/app/core/core.module';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -43,14 +44,14 @@ export class WithLocalstorageService {
   login(appUser: AppUser): Observable<{ accessToken: string }> {
     return this.http
       .post<{ accessToken: string }>(
-        `${this.authServerPath}/auth/signin`,
+        `${this.authServerPath}/user/signin`,
         appUser
       )
       .pipe(
         tap(({ accessToken }: { accessToken: string }) => {
           this.setUserValueByToken({ accessToken });
 
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/home/homepage']);
         }),
         catchError((error) => {
           return throwError('SomeThing Wrong during sign in!', error);
@@ -65,7 +66,7 @@ export class WithLocalstorageService {
     this.stopRefreshTokenTimer();
 
     this.userSubject$.next({});
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
   }
 
   /* SignUp */
@@ -80,20 +81,20 @@ export class WithLocalstorageService {
       ...this.appUserRegister,
       ...userRole,
     };
-    const { username, password, email, role, tmdb_key } = this.appUserRegister;
+    const { username, pwd, email, role, tmdb_key } = this.appUserRegister;
 
-    if (!username || !password || !email || !role || !tmdb_key)
+    if (!username || !preserveWhitespacesDefault || !email || !role || !tmdb_key)
       return of('Register failed');
 
     return this.http
       .post<{ accessToken: string }>(
-        [this.authServerPath, 'auth', 'signup'].join('/'),
+        [this.authServerPath, 'user', 'signup'].join('/'),
         this.appUserRegister
       )
       .pipe(
         tap(({ accessToken }: { accessToken: string }) => {
           this.setUserValueByToken({ accessToken });
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/home/homepage']);
         }),
         catchError((error) => {
           return throwError('SomeThing Wrong during sign up!', error);
@@ -108,13 +109,13 @@ export class WithLocalstorageService {
 
     return this.http
       .patch<{ accessToken: string }>(
-        [this.authServerPath, 'auth', 'userupdate'].join('/'),
+        [this.authServerPath, 'user', 'userupdate'].join('/'),
         userRole
       )
       .pipe(
         tap(({ accessToken }: { accessToken: string }) => {
           this.setUserValueByToken({ accessToken });
-          this.router.navigate(['/movies']);
+          this.router.navigate(['/home/homepage']);
         }),
         catchError((error) => {
           return throwError('SomeThing Wrong during sign up!', error);
@@ -135,7 +136,7 @@ export class WithLocalstorageService {
     const user = { id, username, email, role, tmdb_key };
 
     return this.http
-      .post<any>(`${this.authServerPath}/auth/refresh-token`, user)
+      .post<any>(`${this.authServerPath}/user/refresh-token`, user)
       .pipe(
         tap(({ accessToken }: { accessToken: string }) => {
           this.setUserValueByToken({ accessToken });

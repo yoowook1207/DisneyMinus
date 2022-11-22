@@ -32,7 +32,7 @@ export class WithCookieService {
   login(username: string, password: string) {
     return this.http
       .post<any>(
-        `${this.authServerPath}/auth/signin`,
+        `${this.authServerPath}/user/signin`,
         { username, password },
         { withCredentials: true }
       )
@@ -48,20 +48,20 @@ export class WithCookieService {
   logout() {
     this.http
       .post<any>(
-        `${this.authServerPath}/auth/revoke-token`,
+        `${this.authServerPath}/user/revoke-token`,
         {},
         { withCredentials: true }
       )
       .subscribe();
     this.stopRefreshTokenTimer();
     this.userSubject$.next({});
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
   }
 
   refreshToken() {
     return this.http
       .post<any>(
-        `${this.authServerPath}/auth/refresh-token`,
+        `${this.authServerPath}/user/refresh-token`,
         {},
         { withCredentials: true }
       )

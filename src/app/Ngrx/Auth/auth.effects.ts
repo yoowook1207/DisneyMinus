@@ -28,11 +28,11 @@ export class AuthEffects {
   private login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.SendLoginRequest),
-      exhaustMap(({ email, password }: AppUser) => {
+      exhaustMap(({ email, pwd }: AppUser) => {
         return this.http
           .post<AuthDto>(`${this.authServerPath}/auth/signin`, {
             email,
-            password,
+            pwd,
           })
           .pipe(
             map(({ accessToken, role }: AuthDto) => {

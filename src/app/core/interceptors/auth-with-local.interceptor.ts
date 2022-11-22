@@ -27,7 +27,7 @@ export class AuthWithLocalInterceptor implements HttpInterceptor {
 
     const isLoggedIn = user && user.jwtToken;
     const isApiUrl = request.url.startsWith(
-      `${this.autoServerPath}/auth/userupdate`
+      `${this.autoServerPath}/user/userupdate`
     );
     if (isLoggedIn && isApiUrl) {
       request = request.clone({
