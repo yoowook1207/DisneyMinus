@@ -93,7 +93,6 @@ export class RegisterPageComponent implements OnInit {
       // this.authService.addUserInfo(this.regFirstPage.value)
       this.authServiceOrg.addUserInfo(this.regFirstPage.value)
       this.router.navigate(['/register/step2'])
-      console.log(this.regFirstPage.value)
     } else if (!this.term.value) {
       this.showTermError = false;
     } else {
