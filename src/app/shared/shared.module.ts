@@ -10,8 +10,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 
-
-
 @NgModule({
   declarations: [HeaderComponent],
   imports: [
@@ -23,7 +21,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-
   ],
   exports: [
     HeaderComponent,
@@ -38,6 +35,6 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-  ]
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -1,88 +1,195 @@
 <div class="registerMain">
-    <div class="registerContainer">
-        <h2>Welcome to Disney-!</h2>
-        <p>You will use this email and password to log into your accounts for all your favorite services across The Wallet Disney Family of Companies, including Disney-.</p>
-        <form class="registrationForm" [formGroup]="regFirstPage" (ngSubmit)="onSubmit()">
-            <input type="email" formControlName="email" class="inputBox" placeholder="email@mail.com" required email value={{fromEmail}}>
-            <div *ngIf="!email.valid && (email.dirty || email.touched)">
-                <div *ngIf="email.errors?.['hasemail']" class="invalid">
-                  email already exist! Try another...
-                </div>
-                <div *ngIf="regFirstPage.get('email')?.errors?.['email']" class="invalid">
-                  email is required
-                </div>
-              </div>
-            <div class="pwdHolder" formGroupName="pwd">
-                <input type="password" formControlName="password" class="inputBox"  placeholder="password">
-                <div *ngIf="!pwd.get('password')?.valid && (pwd.get('password')?.dirty || pwd.get('password')?.touched)" class="elementToFadeIn">
-                    <div class="pwdErrorBox">
-                        <div class="errRow">
-                            <mat-icon *ngIf="pwd.get('password')?.errors?.['minlen']" class="iconRed">close</mat-icon>
-                            <mat-icon *ngIf="!(pwd.get('password')?.errors?.['minlen'])" class="iconGreen">check</mat-icon>
-                            <p class="validateMsg">password should be longer than 5</p>
-                        </div>
-                        <div class="errRow">
-                            <mat-icon *ngIf="pwd.get('password')?.errors?.['isSymbol']" class="iconRed">close</mat-icon>
-                            <mat-icon *ngIf="!(pwd.get('password')?.errors?.['isSymbol'])" class="iconGreen">check</mat-icon>
-                            <p class="validateMsg">password should contain at least one of *.!@#$%^&?</p>
-                        </div>
-                        <div class="errRow">
-                            <mat-icon *ngIf="pwd.get('password')?.errors?.['isLower']" class="iconRed">close</mat-icon>
-                            <mat-icon *ngIf="!(pwd.get('password')?.errors?.['isLower'])" class="iconGreen">check</mat-icon>
-                            <p class="validateMsg">password should contain at least one of lowercase</p>
-                        </div>
-                        <div class="errRow">
-                            <mat-icon *ngIf="pwd.get('password')?.errors?.['isUpper']" class="iconRed">close</mat-icon>
-                            <mat-icon *ngIf="!(pwd.get('password')?.errors?.['isUpper'])" class="iconGreen">check</mat-icon>
-                            <p class="validateMsg">password should contain at least one of uppercase</p>
-                        </div>
-                        <div class="errRow">
-                            <mat-icon *ngIf="pwd.get('password')?.errors?.['isNumber']" class="iconRed">close</mat-icon>
-                            <mat-icon *ngIf="!(pwd.get('password')?.errors?.['isNumber'])" class="iconGreen">check</mat-icon>
-                            <p class="validateMsg">password should contain at least one of the numbers</p>
-                        </div>
-                    </div>
-                </div>
-                <input type="password" formControlName="passwordConfirm" class="inputBox"  placeholder="Confirm password" autocomplete="off">    
+  <div class="registerContainer">
+    <h2>Welcome to Disney-!</h2>
+    <p>
+      You will use this email and password to log into your accounts for all
+      your favorite services across The Wallet Disney Family of Companies,
+      including Disney-.
+    </p>
+    <form
+      class="registrationForm"
+      [formGroup]="regFirstPage"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        type="email"
+        formControlName="email"
+        class="inputBox"
+        placeholder="email@mail.com"
+        required
+        email
+        value="{{ fromEmail }}"
+      />
+      <div *ngIf="!email.valid && (email.dirty || email.touched)">
+        <div *ngIf="email.errors?.['hasemail']" class="invalid">
+          email already exist! Try another...
+        </div>
+        <div
+          *ngIf="regFirstPage.get('email')?.errors?.['email']"
+          class="invalid"
+        >
+          email is required
+        </div>
+      </div>
+      <div class="pwdHolder" formGroupName="pwd">
+        <input
+          type="password"
+          formControlName="password"
+          class="inputBox"
+          placeholder="password"
+        />
+        <div
+          *ngIf="
+            !pwd.get('password')?.valid &&
+            (pwd.get('password')?.dirty || pwd.get('password')?.touched)
+          "
+          class="elementToFadeIn"
+        >
+          <div class="pwdErrorBox">
+            <div class="errRow">
+              <mat-icon
+                *ngIf="pwd.get('password')?.errors?.['minlen']"
+                class="iconRed"
+                >close</mat-icon
+              >
+              <mat-icon
+                *ngIf="!(pwd.get('password')?.errors?.['minlen'])"
+                class="iconGreen"
+                >check</mat-icon
+              >
+              <p class="validateMsg">password should be longer than 5</p>
             </div>
-            <div *ngIf="!pwd.valid && (pwd.dirty || pwd.touched)">
-                <div *ngIf="pwd.errors?.[pwdNotMatch]" class="invalid">
-                    Password did not match!
-                </div>
+            <div class="errRow">
+              <mat-icon
+                *ngIf="pwd.get('password')?.errors?.['isSymbol']"
+                class="iconRed"
+                >close</mat-icon
+              >
+              <mat-icon
+                *ngIf="!(pwd.get('password')?.errors?.['isSymbol'])"
+                class="iconGreen"
+                >check</mat-icon
+              >
+              <p class="validateMsg">
+                password should contain at least one of *.!@#$%^&?
+              </p>
             </div>
-            <div class="agreeBox">
-                <div>
-                    <input type="checkbox" formControlName="agreeTerm" name="agreeCheckBox" id="agreeCheckBox">
-                </div>
-                <p>Yes! I would like to receive updates, special offers, and other information from Disney+ and The Wallet Disney Family of Companies.</p>
+            <div class="errRow">
+              <mat-icon
+                *ngIf="pwd.get('password')?.errors?.['isLower']"
+                class="iconRed"
+                >close</mat-icon
+              >
+              <mat-icon
+                *ngIf="!(pwd.get('password')?.errors?.['isLower'])"
+                class="iconGreen"
+                >check</mat-icon
+              >
+              <p class="validateMsg">
+                password should contain at least one of lowercase
+              </p>
             </div>
-            <div [hidden]="showTermError">
-                <p class="invalid">Please read our terms and condition, and agree with the checkbox.</p>
+            <div class="errRow">
+              <mat-icon
+                *ngIf="pwd.get('password')?.errors?.['isUpper']"
+                class="iconRed"
+                >close</mat-icon
+              >
+              <mat-icon
+                *ngIf="!(pwd.get('password')?.errors?.['isUpper'])"
+                class="iconGreen"
+                >check</mat-icon
+              >
+              <p class="validateMsg">
+                password should contain at least one of uppercase
+              </p>
             </div>
-            <div class="termsConditions">
-                <p>
-                    Disney will use your data to personalize and improve your Disney+ experience and to send you information about Disney+. You can change your communication preferences anytime. We may use your data as described in our 
-                    <a href="https://images.template.net/wp-content/uploads/2018/03/Example-of-Privacy-Policy-788x1020.png" target="_blank">
-                        Privacy Policy
-                    </a>
-                    , including sharing it with the The Wallet Disney Family of Companies. By clicking "Agree & Continue," you agree to our 
-                    <a href="https://images.template.net/9982/Online-Subscription-Agreement-Template-3.jpg" target="_blank">
-                        Subscriber Agreement
-                    </a>
-                    and acknowledge that you have read our 
-                    <a href="https://images.template.net/wp-content/uploads/2018/03/Example-of-Privacy-Policy-788x1020.png" target="_blank">
-                        Privacy Policy
-                    </a>
-                    and
-                    <a href="https://www.maryland.gov/pages/privacy_security.aspx" target="_blank">
-                        Maryland Privacy Notice
-                    </a>
-                </p>
-                <button type="submit" class="submitBtn">
-                    AGREE & CONTINUE
-                </button>
+            <div class="errRow">
+              <mat-icon
+                *ngIf="pwd.get('password')?.errors?.['isNumber']"
+                class="iconRed"
+                >close</mat-icon
+              >
+              <mat-icon
+                *ngIf="!(pwd.get('password')?.errors?.['isNumber'])"
+                class="iconGreen"
+                >check</mat-icon
+              >
+              <p class="validateMsg">
+                password should contain at least one of the numbers
+              </p>
             </div>
-        </form>
-
-    </div>
+          </div>
+        </div>
+        <input
+          type="password"
+          formControlName="passwordConfirm"
+          class="inputBox"
+          placeholder="Confirm password"
+          autocomplete="off"
+        />
+      </div>
+      <div *ngIf="!pwd.valid && (pwd.dirty || pwd.touched)">
+        <div *ngIf="pwd.errors?.[pwdNotMatch]" class="invalid">
+          Password did not match!
+        </div>
+      </div>
+      <div class="agreeBox">
+        <div>
+          <input
+            type="checkbox"
+            formControlName="agreeTerm"
+            name="agreeCheckBox"
+            id="agreeCheckBox"
+          />
+        </div>
+        <p>
+          Yes! I would like to receive updates, special offers, and other
+          information from Disney+ and The Wallet Disney Family of Companies.
+        </p>
+      </div>
+      <div [hidden]="showTermError">
+        <p class="invalid">
+          Please read our terms and condition, and agree with the checkbox.
+        </p>
+      </div>
+      <div class="termsConditions">
+        <p>
+          Disney will use your data to personalize and improve your Disney+
+          experience and to send you information about Disney+. You can change
+          your communication preferences anytime. We may use your data as
+          described in our
+          <a
+            href="https://images.template.net/wp-content/uploads/2018/03/Example-of-Privacy-Policy-788x1020.png"
+            target="_blank"
+          >
+            Privacy Policy
+          </a>
+          , including sharing it with the The Wallet Disney Family of Companies.
+          By clicking "Agree & Continue," you agree to our
+          <a
+            href="https://images.template.net/9982/Online-Subscription-Agreement-Template-3.jpg"
+            target="_blank"
+          >
+            Subscriber Agreement
+          </a>
+          and acknowledge that you have read our
+          <a
+            href="https://images.template.net/wp-content/uploads/2018/03/Example-of-Privacy-Policy-788x1020.png"
+            target="_blank"
+          >
+            Privacy Policy
+          </a>
+          and
+          <a
+            href="https://www.maryland.gov/pages/privacy_security.aspx"
+            target="_blank"
+          >
+            Maryland Privacy Notice
+          </a>
+        </p>
+        <button type="submit" class="submitBtn">AGREE & CONTINUE</button>
+      </div>
+    </form>
+  </div>
 </div>
